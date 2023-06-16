@@ -1,0 +1,94 @@
+input {
+    font-family: "Segoe UI", "Roboto";
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0;
+    border: 1px solid gray;
+    border-radius: 2px;
+    height: 100%;
+    width: 100%;
+}
+
+.table-wrapper {
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        // margin: 1em 0;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 0.5em;
+    }
+
+    th {
+        background-color: #555;
+        color: #fff;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    td {
+
+        text-align: center;
+    }
+
+}
+
+.tr-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    width: auto;
+}
+
+.btn-delete,
+.btn-save,
+.btn-edit,
+.btn-cancel {
+    background-image: url(../../images/icons8-delete.svg);
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-delete:hover,
+.btn-save:hover,
+.btn-edit:hover,
+.btn-cancel {
+    cursor: pointer;
+
+}
+
+.btn-save {
+    background-image: url(../../images/icons8-save.svg);
+}
+
+.btn-edit {
+    background-image: url(../../images/icons8-edit.svg);
+}
+
+.btn-cancel {
+    background-image: url(../../images/icons8-cancel.svg);
+
+}
+
+@media (max-width: 460px) {
+
+    th:nth-child(4) {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    th:nth-child(4) {
+        width: 10%;
+    }
+}

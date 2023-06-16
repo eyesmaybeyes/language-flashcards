@@ -4,7 +4,7 @@ import whiteCat from '../../images/white_cat.png';
 function Header() {
     return (
         <header className="header">
-            <img className="header__logo" src={whiteCat} alt="kitty"></img>
+            <a href="#"><img className="header__logo" src={whiteCat} alt="kitty"></img></a>
             <nav className="header__nav">
                 <a className="header__link" href="#">
                     Log In
