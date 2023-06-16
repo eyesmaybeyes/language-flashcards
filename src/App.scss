@@ -1,0 +1,27 @@
+@import "./colours";
+
+html {
+  font-size: 12px;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+// .App {}
+
+// .container {}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

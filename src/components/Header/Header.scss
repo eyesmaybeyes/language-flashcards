@@ -1,0 +1,70 @@
+@import "../../colours";
+
+.header {
+    display: flex;
+    background-color: var(--header-bg);
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 10px 200px;
+
+    // .header__logo
+
+    &__logo {
+        min-height: 70px;
+        max-height: 88px;
+    }
+
+    // .header__nav
+
+    &__nav {
+        display: flex;
+        column-gap: 2.5rem;
+    }
+
+    // .header__link
+
+    &__link {
+        color: #fff;
+    }
+
+    &__link:hover {
+        color: yellow;
+        text-decoration: underline;
+    }
+
+}
+
+.header-title {
+    margin: 0;
+}
+
+
+@media (max-width: 946px) {
+    .header {
+        font-size: 2rem;
+        padding: 15px 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 545px) {
+    .header {
+        font-size: 1.4rem;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 440px) {
+    .header {
+        font-size: 1rem;
+    }
+}
