@@ -1,44 +1,92 @@
 import { useState } from "react";
-import data from "../../words.json";
 
 import "./Table.scss";
 
+import {
+    InsertLocalStorageData,
+    RemoveLocalStorageData,
+} from "../../Utils/LocalStorageSaver.js";
+
 function Table() {
-    const [editIndexes, setEditIndexes] = useState([]);
+    let data = JSON.parse(localStorage.getItem("words"));
+    const [editIndex, setEditIndex] = useState(-1);
+    const [editEnglish, setEnglish] = useState("");
+    const [editTranscription, setTranscription] = useState("");
+    const [editRussian, setRussian] = useState("");
+
+    const onChangeHandler = (event, property) => {
+        if (property === "english") {
+            setEnglish(event.target.value);
+        }
+
+        if (property === "transcription") {
+            setTranscription(event.target.value);
+        }
+        if (property === "russian") {
+            setRussian(event.target.value);
+        }
+    };
 
     const handleEditClick = (index) => {
-        setEditIndexes([...editIndexes, index]);
+        setEditIndex(index);
     };
 
-    const handleSaveClick = (index) => {
-        const newEditIndexes = [...editIndexes];
-        const editIndex = newEditIndexes.indexOf(index);
-
-        if (editIndex !== -1) {
-            newEditIndexes.splice(editIndex, 1);
-            setEditIndexes(newEditIndexes);
+    const handleSaveClick = (item, index) => {
+        if (!editEnglish == "") {
+            item.english = editEnglish;
         }
-    };
 
-    const handleCancelClick = (index) => {
-        const newEditIndexes = [...editIndexes];
-        const editIndex = newEditIndexes.indexOf(index);
-
-        if (editIndex !== -1) {
-            newEditIndexes.splice(editIndex, 1);
-            setEditIndexes(newEditIndexes);
+        if (!editTranscription == "") {
+            item.transcription = editTranscription;
         }
+
+        if (!editRussian == "") {
+            item.russian = editRussian;
+        }
+
+        InsertLocalStorageData(item, index);
+
+        setEnglish("");
+        setTranscription("");
+        setRussian("");
+
+        setEditIndex(-1);
     };
 
-    const isEditing = (index) => {
-        return editIndexes.includes(index);
+    const handleCancelClick = () => {
+        setEditIndex(-1);
+        setEnglish("");
+        setTranscription("");
+        setRussian("");
+    };
+
+    const handleDeleteClick = (index) => {
+        RemoveLocalStorageData(index);
+
+        if (editIndex == -1) {
+            setEditIndex(-2);
+        }
+
+        if (editIndex == -2) {
+            setEditIndex(-1);
+        }
+
+        setEnglish("");
+        setTranscription("");
+        setRussian("");
     };
 
     const renderCell = (item, index, property) => {
-        if (isEditing(index)) {
+        data = JSON.parse(localStorage.getItem("words"));
+
+        if (index === editIndex) {
             return (
                 <td>
-                    <input type="text" defaultValue={item[property]} />
+                    <input
+                        type="text"
+                        defaultValue={item[property]}
+                        onChange={(event) => onChangeHandler(event, property)}
+                    />
                 </td>
             );
         } else {
@@ -62,34 +110,42 @@ function Table() {
                         {renderCell(item, index, "russian")}
                         <td>
                             <div className="tr-buttons">
-                                {isEditing(index) ? (
+                                {index === editIndex ? (
                                     <>
                                         <button
                                             className="btn-save"
-                                            onClick={handleSaveClick}
+                                            onClick={() =>
+                                                handleSaveClick(item, index)
+                                            }
                                         ></button>
                                         <button
                                             className="btn-cancel"
                                             onClick={handleCancelClick}
                                         ></button>
+                                        <button
+                                            className="btn-delete"
+                                            onClick={() =>
+                                                handleDeleteClick(index)
+                                            }
+                                        ></button>
                                     </>
                                 ) : (
                                     <>
-                                        <button
-                                            className="btn-save"
-                                            onClick={() =>
-                                                handleSaveClick(index)
-                                            }
-                                        ></button>
+                                        <button className="btn-save"></button>
                                         <button
                                             className="btn-edit"
                                             onClick={() =>
                                                 handleEditClick(index)
                                             }
                                         ></button>
+                                        <button
+                                            className="btn-delete"
+                                            onClick={() =>
+                                                handleDeleteClick(index)
+                                            }
+                                        ></button>
                                     </>
                                 )}
-                                <button className="btn-delete"></button>
                             </div>
                         </td>
                     </tr>
