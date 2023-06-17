@@ -1,7 +1,7 @@
 import './App.scss';
 import './components/Header/Header.scss';
 import './components/Footer/Footer.scss';
-import { WriteLocalStorageData } from './Utils/LocalStorageSaver.js';
+import { WriteLocalStorageData } from './utils/LocalStorageSaver.js';
 import { Header } from './components/Header/Header.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import { Table } from './components/Table/Table.jsx';

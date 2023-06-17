@@ -5,7 +5,7 @@ import "./Table.scss";
 import {
     InsertLocalStorageData,
     RemoveLocalStorageData,
-} from "../../Utils/LocalStorageSaver.js";
+} from "../../utils/LocalStorageSaver.js";
 
 function Table() {
     let data = JSON.parse(localStorage.getItem("words"));
