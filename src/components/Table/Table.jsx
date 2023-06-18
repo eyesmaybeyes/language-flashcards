@@ -63,17 +63,15 @@ function Table() {
     const handleDeleteClick = (index) => {
         RemoveLocalStorageData(index);
 
-        if (editIndex == -1) {
-            setEditIndex(-2);
-        }
-
-        if (editIndex == -2) {
-            setEditIndex(-1);
-        }
-
         setEnglish("");
         setTranscription("");
         setRussian("");
+
+        if (editIndex == "9999") {
+            setEditIndex("999");
+        } else {
+            setEditIndex("9999");
+        }
     };
 
     const renderCell = (item, index, property) => {
