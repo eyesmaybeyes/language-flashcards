@@ -91,7 +91,6 @@ function Table() {
             return <td>{item[property]}</td>;
         }
     };
-
     return (
         <div className="table-wrapper">
             <table>
@@ -99,7 +98,9 @@ function Table() {
                     <th>Слово</th>
                     <th>Произношение</th>
                     <th>Перевод</th>
-                    <th></th>
+                    <th className="th__end">
+                        <button className="btn-add"></button>
+                    </th>
                 </tr>
                 {data.map((item, index) => (
                     <tr key={index}>
