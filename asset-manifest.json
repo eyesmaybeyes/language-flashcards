@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/language-flashcards/static/css/main.b462ab27.css",
-    "main.js": "/language-flashcards/static/js/main.1ffd5469.js",
+    "main.css": "/language-flashcards/static/css/main.2d030f77.css",
+    "main.js": "/language-flashcards/static/js/main.dcac520c.js",
     "static/js/787.6282c63a.chunk.js": "/language-flashcards/static/js/787.6282c63a.chunk.js",
     "static/media/icons8-turn.svg": "/language-flashcards/static/media/icons8-turn.8ff1d52d31de506e648f.svg",
     "static/media/icons8-cancel.svg": "/language-flashcards/static/media/icons8-cancel.1f5eb3ecbf6eb5888e0d.svg",
@@ -9,12 +9,13 @@
     "static/media/icons8-delete.svg": "/language-flashcards/static/media/icons8-delete.99e7cce249a31ad75f91.svg",
     "static/media/icons8-save.svg": "/language-flashcards/static/media/icons8-save.3ca5d563467288d3bb64.svg",
     "index.html": "/language-flashcards/index.html",
-    "main.b462ab27.css.map": "/language-flashcards/static/css/main.b462ab27.css.map",
-    "main.1ffd5469.js.map": "/language-flashcards/static/js/main.1ffd5469.js.map",
+    "static/media/icons8-add.svg": "/language-flashcards/static/media/icons8-add.092160710683704ca696.svg",
+    "main.2d030f77.css.map": "/language-flashcards/static/css/main.2d030f77.css.map",
+    "main.dcac520c.js.map": "/language-flashcards/static/js/main.dcac520c.js.map",
     "787.6282c63a.chunk.js.map": "/language-flashcards/static/js/787.6282c63a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b462ab27.css",
-    "static/js/main.1ffd5469.js"
+    "static/css/main.2d030f77.css",
+    "static/js/main.dcac520c.js"
   ]
 }
