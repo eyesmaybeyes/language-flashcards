@@ -13,6 +13,8 @@ a {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   min-height: 600px;
   margin: 30px 100px;
   padding: 20px;

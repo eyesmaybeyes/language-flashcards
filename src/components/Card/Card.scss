@@ -1,0 +1,57 @@
+// .flip-card {
+//     position: relative;
+//     width: 100%;
+//     margin-bottom: 2rem;
+//     perspective: 1000px;
+// }
+
+.flashcard {
+    width: 100%;
+    max-width: 500px;
+    min-width: 250px;
+    min-height: 350px;
+    margin-bottom: 25px;
+    align-self: center;
+    // width: 200px;
+    // height: 200px;
+    // position: absolute;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.5s;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px rgba(172, 172, 172, 0.5);
+}
+
+.front,
+.back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    // padding: 1rem;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.back {
+    transform: rotateX(180deg);
+}
+
+.btn-turn {
+    background-image: url(../../images/icons8-turn.svg);
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color: transparent;
+    align-self: center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    margin: 20px;
+    position: absolute;
+    transform: rotateX(180deg);
+}
