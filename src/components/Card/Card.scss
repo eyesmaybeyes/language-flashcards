@@ -55,3 +55,26 @@
     position: absolute;
     transform: rotateX(180deg);
 }
+
+.btn-prev {
+    background-image: url(../../images/Frame-11svg.svg);
+    left: 0;
+}
+
+.btn-next {
+    background-image: url(../../images/Frame-18svg.svg);
+    right: 0;
+}
+
+.btn-prev,
+.btn-next {
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+    border: none;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 50px;
+}

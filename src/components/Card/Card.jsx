@@ -27,9 +27,11 @@ class Flashcard extends React.Component {
                 style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
             >
                 <div className="front">
+                <button className="btn-prev"></button>
                     <h2>{word}Слово</h2>
                     <p>{transcription}Транскрипция</p>
                     <button className="btn-turn"></button>
+                <button className="btn-next"></button>
                 </div>
                 <div className="back">
                     <h2>{translation}Перевод</h2>
