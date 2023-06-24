@@ -1,4 +1,4 @@
-import data from './src/data/words.json';
+import data from '../src/data/words.json';
 
 export function WriteLocalStorageData() {
     if (!IsDataWritten()) {
