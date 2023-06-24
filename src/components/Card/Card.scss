@@ -16,7 +16,7 @@
     // height: 200px;
     // position: absolute;
     transform-style: preserve-3d;
-    cursor: pointer;
+    // cursor: pointer;
     transition: transform 0.5s;
     border: 1px solid lightgrey;
     border-radius: 5px;
@@ -33,7 +33,6 @@
     // padding: 1rem;
     position: absolute;
     backface-visibility: hidden;
-    display: flex;
     justify-content: center;
     text-align: center;
 }
@@ -66,6 +65,23 @@
     right: 0;
 }
 
+// .btn-english,
+// .btn-transcription,
+// .btn-russian {
+//     opacity: 0;
+//     transform: translateY(20px);
+//     animation: slideFadeIn 1.5s forwards;
+// }
+// @keyframes slideFadeIn {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(20px);
+//     }
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+// }
 .btn-prev,
 .btn-next {
     background-color: transparent;

@@ -13,12 +13,12 @@ function App() {
 
     return (
         <div className="App">
-            <Header></Header>
+            <Header />
             <div className="container">
-                <Flashcard></Flashcard>
-                <Table></Table>
+                <Flashcard />
+                <Table />
             </div>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 }

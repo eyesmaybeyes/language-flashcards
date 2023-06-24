@@ -1,45 +1,35 @@
 import React from "react";
+import { useState } from "react";
 
 import "./Card.scss";
 
-class Flashcard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isFlipped: false,
-        };
-    }
+function Flashcard(props) {
+    const [isFlipped, setIsFlipped] = useState(false);
 
-    handleFlipCard = () => {
-        this.setState((prevState) => ({
-            isFlipped: !prevState.isFlipped,
-        }));
+    const handleFlipCard = () => {
+        setIsFlipped(!isFlipped);
     };
 
-    render() {
-        const { word, transcription, translation } = this.props;
-        const { isFlipped } = this.state;
+    const { word, transcription, translation } = props;
 
-        return (
-            <div
-                className="flashcard"
-                onClick={this.handleFlipCard}
-                style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
-            >
-                <div className="front">
+    return (
+        <div
+            className="flashcard"
+            style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
+        >
+            <div className="front" onClick={handleFlipCard}>
                 <button className="btn-prev"></button>
-                    <h2>{word}Слово</h2>
-                    <p>{transcription}Транскрипция</p>
-                    <button className="btn-turn"></button>
+                <h2>{word}Слово</h2>
+                <p>{transcription}Транскрипция</p>
+                <button className="btn-turn"></button>
                 <button className="btn-next"></button>
-                </div>
-                <div className="back">
-                    <h2>{translation}Перевод</h2>
-                    <button className="btn-turn"></button>
-                </div>
             </div>
-        );
-    }
+            <div className="back" onClick={handleFlipCard}>
+                <h2>{translation}Перевод</h2>
+                <button className="btn-turn"></button>
+            </div>
+        </div>
+    );
 }
 
 export { Flashcard };

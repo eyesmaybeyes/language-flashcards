@@ -99,7 +99,7 @@ function Table() {
                     <th>Произношение</th>
                     <th>Перевод</th>
                     <th className="th__end">
-                        <button className="btn-add"></button>
+                        {/* <button className="btn-add"></button> */}
                     </th>
                 </tr>
                 {data.map((item, index) => (
