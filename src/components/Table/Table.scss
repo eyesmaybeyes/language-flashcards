@@ -1,9 +1,11 @@
+@import "../../colours";
+
 input {
     font-family: "Segoe UI", "Roboto";
     text-align: center;
     font-size: 1.5rem;
     padding: 0;
-    border: 1px solid gray;
+    border: 1px solid var(--input-border);
     border-radius: 2px;
     height: 100%;
     width: 100%;
@@ -19,13 +21,13 @@ input {
 
     th,
     td {
-        border: 1px solid #ddd;
+        border: 1px solid var(--th-border);
         padding: 0.5em;
     }
 
     th {
-        background-color: #555;
-        color: #fff;
+        background-color: var(--th-bg);
+        color: var(--header-link);
         text-align: left;
     }
 
@@ -34,7 +36,7 @@ input {
     }
 
     tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: var(--tr-bg);
     }
 
     td {

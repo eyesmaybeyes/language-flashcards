@@ -1,8 +1,9 @@
+@import "../../colours";
+
 .footer {
     display: flex;
     flex-direction: column;
     background-color: var(--footer-bg);
-    color: #fff;
     align-items: center;
     font-size: 2rem;
     font-weight: 600;
@@ -18,7 +19,9 @@
 
     // .footer__desc
 
-    // &__desc {}
+    &__desc {
+        color: var(--footer-desc);
+    }
 }
 
 @media (max-width: 946px) {

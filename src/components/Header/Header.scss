@@ -3,7 +3,6 @@
 .header {
     display: flex;
     background-color: var(--header-bg);
-    color: #fff;
     justify-content: space-between;
     align-items: center;
     font-size: 2rem;
@@ -27,11 +26,11 @@
     // .header__link
 
     &__link {
-        color: #fff;
+        color: var(--header-link);
     }
 
     &__link:hover {
-        color: yellow;
+        color: var(--header-hover);
         text-decoration: underline;
     }
 
