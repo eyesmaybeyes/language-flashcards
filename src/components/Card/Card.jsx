@@ -1,6 +1,6 @@
-import React from 'react';
-import './Card.scss';
-import { useEffect, useState } from 'react';
+import React from "react";
+import "./Card.scss";
+import { useEffect, useState } from "react";
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -9,14 +9,7 @@ function Flashcard(props) {
     const handleFlipCard = () => {
         setIsFlipped(!isFlipped);
     };
-    // const { word, transcription, translation } = props;
-    const word = props.word;
-
-    const transcription = props.transcription;
-
-    const translation = props.translation;
-
-    const isCardRefresh = props.isCardRefresh;
+    const { word, transcription, translation, isCardRefresh } = props;
 
     useEffect(() => {
         setKey(Date.now());
@@ -36,7 +29,7 @@ function Flashcard(props) {
         <div
             key={key}
             className="flashcard"
-            style={{ transform: isFlipped ? 'rotateX(180deg)' : '' }}
+            style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
         >
             <div key={isCardRefresh} className="front" onClick={handleFlipCard}>
                 <button className="btn-prev" onClick={handlePrev}></button>
