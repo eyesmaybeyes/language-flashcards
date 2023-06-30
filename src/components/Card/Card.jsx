@@ -17,25 +17,19 @@ function Flashcard(props) {
     const translation = props.translation;
 
     const isCardRefresh = props.isCardRefresh;
+
     useEffect(() => {
         setKey(Date.now());
     }, [word]);
 
     const handlePrev = (e) => {
         e.stopPropagation();
-        ChangeCardPrev();
+        props.ChangeCardPrev();
     };
 
     const handleNext = (e) => {
         e.stopPropagation();
-        ChangeCardNext();
-    };
-
-    const ChangeCardNext = () => {
         props.ChangeCardNext();
-    };
-    const ChangeCardPrev = () => {
-        props.ChangeCardPrev();
     };
 
     return (
