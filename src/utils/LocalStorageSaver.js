@@ -24,6 +24,21 @@ export function InsertLocalStorageData(item, index) {
     localStorage.setItem('words', JSON.stringify(retrievedData));
 
 }
+export function AddFirstLocalStorageData(english, transcription, russian) {
+
+    const retrievedData = JSON.parse(localStorage.getItem('words'));
+
+    const word = {
+        english: `${english}`,
+        russian: `${russian}`,
+        // tags: "New word",
+        transcription: `${transcription}`
+    };
+
+    retrievedData.unshift(word);
+
+    localStorage.setItem('words', JSON.stringify(retrievedData));
+}
 
 export function RemoveLocalStorageData(index) {
 

@@ -43,6 +43,7 @@
 }
 
 .btn-turn {
+    position: absolute;
     background-image: url(../../images/icons8-turn.svg);
     width: 48px;
     height: 48px;
@@ -52,8 +53,8 @@
     background-repeat: no-repeat;
     bottom: 0;
     margin: 20px;
-    position: absolute;
     transform: rotateX(180deg);
+    cursor: pointer;
 }
 
 .btn-prev {
@@ -77,4 +78,5 @@
     position: absolute;
     top: 0;
     width: 50px;
+    cursor: pointer;
 }
