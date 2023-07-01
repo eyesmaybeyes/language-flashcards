@@ -23,21 +23,28 @@ function App() {
     let selectedWordTemp = '';
     let selectedTranscriptionTemp = '';
     let selectedTranslationTemp = '';
+    let selectedCurrentElementIndexTemp = '';
+    let selectedDataLengthTemp = '';
 
     if (retrievedData.length == 0) {
 
         selectedWordTemp = 'Not defined';
         selectedTranscriptionTemp = 'Not defined';
         selectedTranslationTemp = 'Not defined';
+
     } else {
         selectedWordTemp = retrievedData[currentElementIndex].english;
         selectedTranscriptionTemp = retrievedData[currentElementIndex].transcription;
         selectedTranslationTemp = retrievedData[currentElementIndex].russian;
+        selectedCurrentElementIndexTemp = currentElementIndex;
+        selectedDataLengthTemp = retrievedData.length;
 
     }
     const [selectedWord, setSelectedWord] = useState(selectedWordTemp);
     const [selectedTranscription, setSelectedTranscription] = useState(selectedTranscriptionTemp);
     const [selectedTranslation, setSelectedTranslation] = useState(selectedTranslationTemp);
+    const [selectedCurrentElementIndex, setSelectedCurrentElementIndex] = useState(selectedCurrentElementIndexTemp);
+    const [selectedDataLength, setSelectedDataLength] = useState(selectedDataLengthTemp);
     const [isCardRefresh, setCardRefresh] = useState(false);
 
     const ChangeCardPrev = () => {
@@ -54,6 +61,8 @@ function App() {
         setSelectedWord(retrievedData[currentElementIndex].english);
         setSelectedTranscription(retrievedData[currentElementIndex].transcription);
         setSelectedTranslation(retrievedData[currentElementIndex].russian);
+        setSelectedCurrentElementIndex(currentElementIndex);
+        setSelectedDataLength(retrievedData.length);
 
     };
     const ChangeCardNext = () => {
@@ -71,6 +80,8 @@ function App() {
         setSelectedWord(retrievedData[currentElementIndex].english);
         setSelectedTranscription(retrievedData[currentElementIndex].transcription);
         setSelectedTranslation(retrievedData[currentElementIndex].russian);
+        setSelectedCurrentElementIndex(currentElementIndex);
+        setSelectedDataLength(retrievedData.length);
     };
 
 
@@ -88,6 +99,8 @@ function App() {
             setSelectedWord(retrievedData[currentElementIndex].english);
             setSelectedTranscription(retrievedData[currentElementIndex].transcription);
             setSelectedTranslation(retrievedData[currentElementIndex].russian);
+            setSelectedCurrentElementIndex(currentElementIndex);
+            setSelectedDataLength(retrievedData.length);
             return;
         }
     };
@@ -102,6 +115,8 @@ function App() {
                     transcription={selectedTranscription}
                     translation={selectedTranslation}
                     isCardRefresh={isCardRefresh}
+                    elementIndex={selectedCurrentElementIndex}
+                    dataLength={selectedDataLength}
                 />
                 <Table RefreshCard={RefreshCard} />
             </div>

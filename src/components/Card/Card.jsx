@@ -9,11 +9,22 @@ function Flashcard(props) {
     const handleFlipCard = () => {
         setIsFlipped(!isFlipped);
     };
-    const { word, transcription, translation, isCardRefresh } = props;
+    const {
+        word,
+        transcription,
+        translation,
+        isCardRefresh,
+        elementIndex,
+        dataLength,
+    } = props;
 
-    useEffect(() => {
-        setKey(Date.now());
-    }, [word]);
+    useEffect(
+        () => {
+            setKey(Date.now());
+        },
+        [word],
+        [elementIndex]
+    );
 
     const handlePrev = (e) => {
         e.stopPropagation();
@@ -32,6 +43,9 @@ function Flashcard(props) {
             style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
         >
             <div key={isCardRefresh} className="front" onClick={handleFlipCard}>
+                <div className="flashcard__counter">
+                    {elementIndex + 1}/{dataLength}
+                </div>
                 <button className="btn-prev" onClick={handlePrev}></button>
                 <h2 className="btn-english">{word}</h2>
                 <p className="btn-transcription">{transcription}</p>
@@ -39,6 +53,9 @@ function Flashcard(props) {
                 <button className="btn-next" onClick={handleNext}></button>
             </div>
             <div className="back" onClick={handleFlipCard}>
+                <div className="flashcard__counter">
+                    {elementIndex + 1}/{dataLength}
+                </div>
                 <h2 className="btn-russian">{translation}</h2>
                 <button className="btn-turn"></button>
             </div>
