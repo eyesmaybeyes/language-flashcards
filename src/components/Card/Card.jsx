@@ -1,6 +1,6 @@
-import React from "react";
-import "./Card.scss";
-import { useEffect, useState } from "react";
+import React from 'react';
+import './Card.scss';
+import { useEffect, useState } from 'react';
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -40,7 +40,7 @@ function Flashcard(props) {
         <div
             key={key}
             className="flashcard"
-            style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
+            style={{ transform: isFlipped ? 'rotateX(180deg)' : '' }}
         >
             <div key={isCardRefresh} className="front" onClick={handleFlipCard}>
                 <div className="flashcard__counter">

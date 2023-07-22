@@ -136,9 +136,9 @@ function Table(props) {
         <div className="table-wrapper">
             <table id="word-table">
                 <tr>
-                    <th>Слово</th>
-                    <th>Произношение</th>
-                    <th>Перевод</th>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translate</th>
                     <th className="th__end">
                         <button
                             className="btn-add"

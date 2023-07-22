@@ -22,6 +22,16 @@
     &__desc {
         color: var(--footer-desc);
     }
+
+    // .footer__link
+
+    &__link {
+        color: var(--footer-desc);
+    }
+
+    &__link:hover {
+        color: var(--header-hover);
+    }
 }
 
 @media (max-width: 946px) {

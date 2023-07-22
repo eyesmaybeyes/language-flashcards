@@ -3,6 +3,8 @@ import './components/Header/Header.scss';
 import './components/Footer/Footer.scss';
 import { useState } from 'react';
 
+import { Route, Routes } from 'react-router-dom';
+
 import { WriteLocalStorageData } from './utils/LocalStorageSaver.js';
 import { Header } from './components/Header/Header.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
@@ -109,19 +111,25 @@ function App() {
         <div className="App">
             <Header />
             <div className="container">
-                <Flashcard ChangeCardNext={ChangeCardNext}
-                    ChangeCardPrev={ChangeCardPrev}
-                    word={selectedWord}
-                    transcription={selectedTranscription}
-                    translation={selectedTranslation}
-                    isCardRefresh={isCardRefresh}
-                    elementIndex={selectedCurrentElementIndex}
-                    dataLength={selectedDataLength}
-                />
-                <Table RefreshCard={RefreshCard} />
+                <Routes>
+                    <Route path="/" element={<Table RefreshCard={RefreshCard} />}
+                    />
+                </Routes>
+                <Routes>
+                    <Route path="/game" element={<Flashcard ChangeCardNext={ChangeCardNext}
+                        ChangeCardPrev={ChangeCardPrev}
+                        word={selectedWord}
+                        transcription={selectedTranscription}
+                        translation={selectedTranslation}
+                        isCardRefresh={isCardRefresh}
+                        elementIndex={selectedCurrentElementIndex}
+                        dataLength={selectedDataLength}
+                    />}
+                    />
+                </Routes>
             </div>
             <Footer />
-        </div>
+        </div >
     );
 
 }

@@ -1,17 +1,21 @@
 import './Header.scss';
+import { Link } from 'react-router-dom';
+
 import whiteCat from '../../images/white_cat.png';
 
 function Header() {
     return (
         <header className="header">
-            <a href="#"><img className="header__logo" src={whiteCat} alt="kitty"></img></a>
+            <Link to={'/'}>
+                <img className="header__logo" src={whiteCat} alt="kitty"></img>
+            </Link>
             <nav className="header__nav">
-                <a className="header__link" href="#">
-                    Log In
-                </a>
-                <a className="header__link" href="#">
-                    Sign Up
-                </a>
+                <Link to={'/'} className="header__link">
+                    Home
+                </Link>
+                <Link to={'/game'} className="header__link">
+                    Game
+                </Link>
             </nav>
         </header>
     );
