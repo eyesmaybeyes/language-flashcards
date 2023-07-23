@@ -1,6 +1,8 @@
 import './App.scss';
 import './components/Header/Header.scss';
 import './components/Footer/Footer.scss';
+import './components/NotFoundPage/NotFoundPage.scss';
+
 import { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
@@ -10,7 +12,7 @@ import { Header } from './components/Header/Header.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import { Table } from './components/Table/Table.jsx';
 import { Flashcard } from './components/Card/Card.jsx';
-
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage.jsx';
 
 let retrievedData = JSON.parse(localStorage.getItem('words'));
 
@@ -109,29 +111,37 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
-            <div className="container">
-                <Routes>
-                    <Route path="/" element={<Table RefreshCard={RefreshCard} />}
-                    />
-                </Routes>
-                <Routes>
-                    <Route path="/game" element={<Flashcard ChangeCardNext={ChangeCardNext}
-                        ChangeCardPrev={ChangeCardPrev}
-                        word={selectedWord}
-                        transcription={selectedTranscription}
-                        translation={selectedTranslation}
-                        isCardRefresh={isCardRefresh}
-                        elementIndex={selectedCurrentElementIndex}
-                        dataLength={selectedDataLength}
-                    />}
-                    />
-                </Routes>
-            </div>
-            <Footer />
-        </div >
+            <Routes>
+                <Route path="*" element={<NotFoundPage />} />
+                <Route exact path="/" element={
+                    <>
+                        <Header />
+                        <div className="container">
+                            <Table RefreshCard={RefreshCard} />
+                        </div>
+                        <Footer />
+                    </>
+                } />
+                <Route exact path="/game" element={
+                    <>
+                        <Header />
+                        <div className="container">
+                            <Flashcard ChangeCardNext={ChangeCardNext}
+                                ChangeCardPrev={ChangeCardPrev}
+                                word={selectedWord}
+                                transcription={selectedTranscription}
+                                translation={selectedTranslation}
+                                isCardRefresh={isCardRefresh}
+                                elementIndex={selectedCurrentElementIndex}
+                                dataLength={selectedDataLength}
+                            />
+                        </div>
+                        <Footer />
+                    </>
+                } />
+            </Routes>
+        </div>
     );
-
 }
 
 export default App;
