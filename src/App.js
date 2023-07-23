@@ -113,7 +113,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
-                <Route exact path="/" element={
+                <Route path="/language-flashcards" element={
                     <>
                         <Header />
                         <div className="container">
@@ -122,7 +122,7 @@ function App() {
                         <Footer />
                     </>
                 } />
-                <Route exact path="/game" element={
+                <Route path="/language-flashcards/game" element={
                     <>
                         <Header />
                         <div className="container">

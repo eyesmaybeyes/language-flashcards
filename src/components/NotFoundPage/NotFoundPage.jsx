@@ -16,9 +16,13 @@ function NotFoundPage() {
                 </p>
                 <p className="output">
                     Please{" "}
-                    <Link to={"/"} className="link-404" href="#2">
+                    <Link
+                        to={"/language-flashcards"}
+                        className="link-404"
+                        href="#2"
+                    >
                         return to the homepage
-                    </Link>{" "}
+                    </Link>
                     .
                 </p>
                 <p className="output">Good luck.</p>

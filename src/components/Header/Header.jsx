@@ -6,14 +6,14 @@ import whiteCat from "../../images/white_cat.png";
 function Header() {
     return (
         <header className="header">
-            <Link to={"/"}>
+            <Link to={"/language-flashcards"}>
                 <img className="header__logo" src={whiteCat} alt="kitty"></img>
             </Link>
             <nav className="header__nav">
-                <Link to={"/"} className="header__link">
+                <Link to={"/language-flashcards"} className="header__link">
                     Home
                 </Link>
-                <Link to={"/game"} className="header__link">
+                <Link to={"/language-flashcards/game"} className="header__link">
                     Game
                 </Link>
             </nav>
