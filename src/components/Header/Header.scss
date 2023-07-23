@@ -5,8 +5,10 @@
     top: 0;
     display: flex;
     background-color: var(--header-bg);
+    box-shadow: 0 0 10px 1px var(--header-shadow);
     justify-content: space-between;
     align-items: center;
+    z-index: 1;
     font-size: 2rem;
     font-weight: 600;
     padding: 10px 200px;
@@ -14,25 +16,35 @@
     // .header__logo
 
     &__logo {
-        min-height: 70px;
-        max-height: 88px;
+        display: flex;
+        column-gap: 1em;
+        align-items: center;
+        color: var(--header-link);
+    }
+
+    // .header__img
+
+    &__img {
+        // min-height: 70px;
+        max-height: 70px;
     }
 
     // .header__nav
 
     &__nav {
         display: flex;
-        column-gap: 2.5rem;
+        column-gap: 1rem;
     }
 
     // .header__link
 
     &__link {
-        text-transform: uppercase;
+        // text-transform: uppercase;
         color: var(--header-link);
     }
 
-    &__link:hover {
+    &__link:hover,
+    &__logo:hover {
         color: var(--header-hover);
         text-decoration: underline;
     }
@@ -62,6 +74,10 @@
     .header {
         font-size: 1.4rem;
         padding: 15px 20px;
+    }
+
+    .header p {
+        display: none;
     }
 }
 

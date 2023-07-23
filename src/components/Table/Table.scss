@@ -5,7 +5,8 @@ input {
     text-align: center;
     font-size: 1.5rem;
     padding: 0;
-    border: 1px solid var(--input-border);
+    border: 2px solid var(--header-link);
+    color: var(--header-link);
     border-radius: 2px;
     height: 100%;
     width: 100%;
@@ -27,7 +28,7 @@ input {
 
     th {
         background-color: var(--th-bg);
-        color: var(--header-link);
+        color: var(--th-border);
         text-align: left;
         font-weight: 500;
         text-transform: uppercase;
@@ -37,11 +38,13 @@ input {
         text-align: center;
     }
 
-    tr:nth-child(even) {
+    // :nth-child(even)
+    tr {
         background-color: var(--tr-bg);
     }
 
     td {
+        color: var(--header-link);
         text-align: center;
     }
 
@@ -60,8 +63,9 @@ input {
 .btn-cancel,
 .btn-add {
     background-image: url(../../images/icons8-delete.svg);
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
     border: none;
     background-color: transparent;
 }
@@ -76,15 +80,16 @@ input {
 }
 
 .btn-add {
-    background-image: url(../../images/icons8-add.svg);
+    background-image: url(../../images/icons8-add-64.png);
 }
 
 .btn-save {
-    background-image: url(../../images/icons8-save.svg);
+    background-image: url(../../images/icons8-check.svg);
 }
 
 .btn-edit {
     background-image: url(../../images/icons8-edit.svg);
+
 }
 
 .btn-cancel {
@@ -96,6 +101,19 @@ input {
 
     th:nth-child(4) {
         width: 30%;
+    }
+
+    .btn-delete,
+    .btn-save,
+    .btn-edit,
+    .btn-cancel,
+    .btn-add {
+        width: 20px;
+        height: 20px;
+    }
+
+    .table-wrapper table {
+        table-layout: auto;
     }
 }
 

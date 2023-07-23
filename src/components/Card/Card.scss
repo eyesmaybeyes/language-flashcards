@@ -21,7 +21,10 @@
     transition: transform 0.5s;
     border: 1px solid var(--card-border);
     border-radius: 5px;
+    background-color: var(--th-border);
+    color: var(--header-link);
     box-shadow: 0 0 10px 1px var(--card-shadow);
+    font-size: 1em;
 }
 
 .front,
@@ -44,13 +47,13 @@
 
 .btn-turn {
     position: absolute;
-    background-image: url(../../images/icons8-turn.svg);
-    width: 48px;
-    height: 48px;
+    background-image: url(../../images/icons8-reload-turn-arrow-function-to-spin-and-restart-50.png);
+    width: 40px;
+    height: 40px;
     border: none;
+    background-size: contain;
     background-color: transparent;
     align-self: center;
-    background-repeat: no-repeat;
     bottom: 0;
     margin: 20px;
     transform: rotateX(180deg);
@@ -81,8 +84,20 @@
     cursor: pointer;
 }
 
+.btn-english,
+.btn-russian {
+    margin: 0;
+    color: #5e3131;
+}
+
 .flashcard__counter {
     position: absolute;
     top: 0;
     margin: 20px;
+}
+
+@media (max-width:460px) {
+    .flashcard {
+        font-size: 1.2rem;
+    }
 }
