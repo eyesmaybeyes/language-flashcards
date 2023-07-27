@@ -1,5 +1,5 @@
-import "./NotFoundPage.scss";
-import { Link } from "react-router-dom";
+import './NotFoundPage.scss';
+import { Link } from 'react-router-dom';
 
 function NotFoundPage() {
     return (
@@ -15,9 +15,9 @@ function NotFoundPage() {
                     its name changed or is temporarily unavailable.
                 </p>
                 <p className="output">
-                    Please{" "}
+                    Please{' '}
                     <Link
-                        to={"/language-flashcards"}
+                        to={'/language-flashcards'}
                         className="link-404"
                         href="#2"
                     >

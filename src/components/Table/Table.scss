@@ -3,13 +3,17 @@
 input {
     font-family: "Segoe UI", "Roboto";
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: 0;
     border: 2px solid var(--header-link);
     color: var(--header-link);
     border-radius: 2px;
     height: 100%;
     width: 100%;
+}
+
+input:focus {
+    outline: none;
 }
 
 .table-wrapper {

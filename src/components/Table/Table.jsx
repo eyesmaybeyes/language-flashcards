@@ -61,6 +61,12 @@ function Table(props) {
         RefreshCard();
     };
 
+    const handleKeyDown = (e, item, index) => {
+        if (e.key === 'Enter') {
+            handleSaveClick(item, index);
+        }
+    };
+
     const handleCancelClick = () => {
         setEditIndex(-1);
         setEnglish('');
@@ -125,6 +131,7 @@ function Table(props) {
                         type="text"
                         defaultValue={item[property]}
                         onChange={(event) => onChangeHandler(event, property)}
+                        onKeyDown={(e) => handleKeyDown(e, item, index)}
                     />
                 </td>
             );
