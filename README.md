@@ -4,8 +4,10 @@ React application for learning foreign words.
 ## Getting started
 
 In the project directory, you can run:
-<p> `npm install`
-<p> `npm run start`
+```sh
+npm install
+npm start
+```
 
 ## Technologies:
 <p>
