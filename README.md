@@ -1,10 +1,13 @@
 # language-flashcards
 React application for learning foreign words.
 
+### [Live Demo](https://eyesmaybeyes.github.io/language-flashcards/)
+
+
 ## Getting started
 
 In the project directory, you can run:
-```sh
+```
 npm install
 npm start
 ```
