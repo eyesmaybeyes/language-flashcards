@@ -17,12 +17,19 @@ a {
 .container {
   min-height: 90vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   // min-height: 600px;
   margin: 30px 150px;
   // padding: 20px;
   font-size: 1.3rem;
   // background-color: #fff;
+}
+
+.container p {
+  font-size: 1.5em;
+  color: #5e3131;
 }
 
 @media (max-width: 946px) {

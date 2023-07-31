@@ -1,6 +1,6 @@
-import React from 'react';
-import './Card.scss';
-import { useEffect, useState } from 'react';
+import React from "react";
+import "./Card.scss";
+import { useEffect, useState } from "react";
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -9,6 +9,7 @@ function Flashcard(props) {
     const handleFlipCard = () => {
         setIsFlipped(!isFlipped);
     };
+
     const {
         word,
         transcription,
@@ -16,8 +17,21 @@ function Flashcard(props) {
         isCardRefresh,
         elementIndex,
         dataLength,
+        onKnowClick,
     } = props;
 
+    const [knowClicked, setKnowClicked] = useState(false); 
+    const handleKnow = (e) => {
+        e.stopPropagation();
+        if (!knowClicked) {
+            onKnowClick();
+            setKnowClicked(true);
+        }
+    };
+    useEffect(() => {
+        setKnowClicked(false);
+    }, [word]);
+    
     useEffect(
         () => {
             setKey(Date.now());
@@ -40,7 +54,7 @@ function Flashcard(props) {
         <div
             key={key}
             className="flashcard"
-            style={{ transform: isFlipped ? 'rotateX(180deg)' : '' }}
+            style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
         >
             <div key={isCardRefresh} className="front" onClick={handleFlipCard}>
                 <div className="flashcard__counter">
@@ -49,6 +63,9 @@ function Flashcard(props) {
                 <button className="btn-prev" onClick={handlePrev}></button>
                 <h2 className="btn-english">{word}</h2>
                 <p className="btn-transcription">{transcription}</p>
+                <button className="btn-know" onClick={handleKnow}>
+                    Знаю
+                </button>
                 <button className="btn-turn"></button>
                 <button className="btn-next" onClick={handleNext}></button>
             </div>

@@ -90,6 +90,23 @@
     color: #5e3131;
 }
 
+.btn-know {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 4px 12px;
+    background-color: var(--header-link);
+    border: none;
+    border-bottom: 4px solid #7a3737;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-know:hover {
+    background-color: #bd4848;
+}
+
 .flashcard__counter {
     position: absolute;
     top: 0;

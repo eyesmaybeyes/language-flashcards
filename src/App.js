@@ -19,6 +19,11 @@ let retrievedData = JSON.parse(localStorage.getItem('words'));
 let currentElementIndex = 0;
 
 function App() {
+    const [studied, setStudied] = useState(0);
+
+    const handleStudied = () => {
+        setStudied(studied + 1);
+    };
 
     WriteLocalStorageData();
 
@@ -134,7 +139,9 @@ function App() {
                                 isCardRefresh={isCardRefresh}
                                 elementIndex={selectedCurrentElementIndex}
                                 dataLength={selectedDataLength}
+                                onKnowClick={handleStudied}
                             />
+                            <p>Изучено слов: {studied}</p>
                         </div>
                         <Footer />
                     </>
