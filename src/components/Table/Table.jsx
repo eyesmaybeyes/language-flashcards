@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Table.scss';
 
 import {
-    InsertLocalStorageData,
+    SetLocalStorageData,
     RemoveLocalStorageData,
     AddFirstLocalStorageData,
 } from '../../utils/LocalStorageSaver.js';
@@ -50,7 +50,7 @@ function Table(props) {
             item.russian = editRussian;
         }
 
-        InsertLocalStorageData(item, index);
+        SetLocalStorageData(item, index);
 
         setEnglish('');
         setTranscription('');

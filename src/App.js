@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { WriteLocalStorageData } from './utils/LocalStorageSaver.js';
+import { WriteLocalStorageData, GetWordKnowCount } from './utils/LocalStorageSaver.js';
 import { Header } from './components/Header/Header.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import { Table } from './components/Table/Table.jsx';
@@ -141,7 +141,7 @@ function App() {
                                 dataLength={selectedDataLength}
                                 onKnowClick={handleStudied}
                             />
-                            <p>Изучено слов: {studied}</p>
+                            <p>Изучено слов: {GetWordKnowCount()}</p>
                         </div>
                         <Footer />
                     </>

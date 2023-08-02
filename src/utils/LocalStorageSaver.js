@@ -1,11 +1,18 @@
 import data from '../data/words.json';
 
 export function WriteLocalStorageData() {
+
+    const words = data;
+
+    words.forEach(function (word) {
+        word.IsWordKnown = false;
+    });
+
     if (!IsDataWritten()) {
-        localStorage.setItem('words', JSON.stringify(data));
+        localStorage.setItem('words', JSON.stringify(words));
     }
 }
-export function InsertLocalStorageData(item, index) {
+export function SetLocalStorageData(item, index) {
 
     const retrievedData = JSON.parse(localStorage.getItem('words'));
 
@@ -24,6 +31,38 @@ export function InsertLocalStorageData(item, index) {
     localStorage.setItem('words', JSON.stringify(retrievedData));
 
 }
+
+export function SetWordKnowLocalStorageData(index, isWordKnown) {
+
+    const retrievedData = JSON.parse(localStorage.getItem('words'));
+
+    retrievedData.forEach((currElement, dataIndex) => {
+
+        if (dataIndex === index) {
+            retrievedData[dataIndex].IsWordKnown = isWordKnown;
+        }
+    });
+
+    localStorage.setItem('words', JSON.stringify(retrievedData));
+}
+
+export function GetWordKnowCount() {
+
+    const retrievedData = JSON.parse(localStorage.getItem('words'));
+
+    let wordKnowCount = 0;
+
+    retrievedData.forEach((currElement, dataIndex) => {
+
+        if (retrievedData[dataIndex].IsWordKnown == true) {
+            wordKnowCount++;
+        }
+    });
+
+    return wordKnowCount;
+}
+
+
 export function AddFirstLocalStorageData(english, transcription, russian) {
 
     const retrievedData = JSON.parse(localStorage.getItem('words'));
