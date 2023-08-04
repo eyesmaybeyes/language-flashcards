@@ -62,6 +62,26 @@ export function GetWordKnowCount() {
     return wordKnowCount;
 }
 
+export function IsWordKnow(word) {
+
+    const retrievedData = JSON.parse(localStorage.getItem('words'));
+
+    let result = false;
+
+    retrievedData.forEach((currElement, dataIndex) => {
+
+        if (retrievedData[dataIndex].english == word) {
+
+            if (retrievedData[dataIndex].IsWordKnown == true) {
+                result = true;
+            }
+        }
+    });
+
+    return result;
+}
+
+
 
 export function AddFirstLocalStorageData(english, transcription, russian) {
 

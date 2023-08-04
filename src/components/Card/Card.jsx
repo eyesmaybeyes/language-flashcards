@@ -1,8 +1,11 @@
 import React from 'react';
 import './Card.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-import { SetWordKnowLocalStorageData } from '../../utils/LocalStorageSaver.js';
+import {
+    SetWordKnowLocalStorageData,
+    IsWordKnow,
+} from '../../utils/LocalStorageSaver.js';
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -23,35 +26,42 @@ function Flashcard(props) {
     } = props;
 
     const [knowClicked, setKnowClicked] = useState(false);
+
+    const knowRef = useRef();
+
     const handleKnow = (e) => {
         e.stopPropagation();
 
         SetWordKnowLocalStorageData(elementIndex, true);
+        knowRef.current.classList.add('button-clicked');
 
         onKnowClick();
 
         setKnowClicked(!knowClicked);
     };
+
     const handleNotKnow = (e) => {
         e.stopPropagation();
 
         SetWordKnowLocalStorageData(elementIndex, false);
+        knowRef.current.classList.remove('button-clicked');
 
         onKnowClick();
 
         setKnowClicked(!knowClicked);
     };
+
     useEffect(() => {
         setKnowClicked(false);
     }, [word]);
 
-    useEffect(
-        () => {
-            setKey(Date.now());
-        },
-        [word],
-        [elementIndex]
-    );
+    useEffect(() => {
+        if (IsWordKnow(word)) {
+            knowRef.current.classList.add('button-clicked');
+        } else {
+            knowRef.current.classList.remove('button-clicked');
+        }
+    }, [word]);
 
     const handlePrev = (e) => {
         e.stopPropagation();
@@ -93,19 +103,12 @@ function Flashcard(props) {
                 </div>
             </div>
             <div className="flashcard__buttons">
-                <button
-                    className="btn-know"
-                    // className={`btn-know ${
-                    //     knowClicked ? "button-clicked" : ""
-                    // }`}
-                    onClick={handleKnow}
-                >
+                <button ref={knowRef} className="btn-know" onClick={handleKnow}>
                     Знаю
                 </button>
                 <button
                     className="btn-notknow"
                     type="button"
-                    // disabled={!knowClicked}
                     onClick={handleNotKnow}
                 >
                     Не знаю
