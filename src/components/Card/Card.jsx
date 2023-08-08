@@ -38,6 +38,7 @@ function Flashcard(props) {
         onKnowClick();
 
         setKnowClicked(!knowClicked);
+        knowRef.current.blur();
     };
 
     const handleNotKnow = (e) => {
@@ -60,6 +61,9 @@ function Flashcard(props) {
             knowRef.current.classList.add('button-clicked');
         } else {
             knowRef.current.classList.remove('button-clicked');
+        }
+        if (!knowRef.current.classList.contains('button-clicked')) {
+            knowRef.current.focus();
         }
     }, [word]);
 

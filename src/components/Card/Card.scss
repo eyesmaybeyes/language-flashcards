@@ -136,9 +136,12 @@
 
 .button-clicked {
     opacity: 0.5;
-    /* просто пример, используйте любые стили */
     pointer-events: none;
-    /* отключает кликаемость кнопки */
+}
+
+.btn-know:focus {
+    outline: none;
+    box-shadow: 0 0 5px 1px #2b8c32;
 }
 
 .flashcard__counter {
