@@ -1,33 +1,34 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import "./Table.scss";
+import './Table.scss';
+
+import Swal from 'sweetalert2';
 
 import {
     SetLocalStorageData,
     RemoveLocalStorageData,
     AddFirstLocalStorageData,
-} from "../../utils/LocalStorageSaver.js";
-import Swal from "sweetalert2";
+} from '../../utils/LocalStorageSaver.js';
 
 const isValueClicked = true;
 const isValueNotClicked = false;
 
 function Table(props) {
-    let data = JSON.parse(localStorage.getItem("words"));
+    let data = JSON.parse(localStorage.getItem('words'));
     const [editIndex, setEditIndex] = useState(-1);
-    const [editEnglish, setEnglish] = useState("");
-    const [editTranscription, setTranscription] = useState("");
-    const [editRussian, setRussian] = useState("");
+    const [editEnglish, setEnglish] = useState('');
+    const [editTranscription, setTranscription] = useState('');
+    const [editRussian, setRussian] = useState('');
 
     const onChangeHandler = (event, property) => {
-        if (property === "english") {
+        if (property === 'english') {
             setEnglish(event.target.value);
         }
 
-        if (property === "transcription") {
+        if (property === 'transcription') {
             setTranscription(event.target.value);
         }
-        if (property === "russian") {
+        if (property === 'russian') {
             setRussian(event.target.value);
         }
     };
@@ -39,9 +40,9 @@ function Table(props) {
     };
 
     const handleSaveClick = (item, index) => {
-        const inputEnglish = document.querySelector(".english");
-        const inputTranscription = document.querySelector(".transcription");
-        const inputRussian = document.querySelector(".russian");
+        const inputEnglish = document.querySelector('.english');
+        const inputTranscription = document.querySelector('.transcription');
+        const inputRussian = document.querySelector('.russian');
 
         const inputEnglishValue = inputEnglish.value.trim();
         const inputTranscriptionValue = inputTranscription.value.trim();
@@ -55,14 +56,14 @@ function Table(props) {
 
         let hasEmptyFields = false;
         inputs.forEach((input) => {
-            if (input.value === "") {
-                input.element.style.border = "2px solid red";
+            if (input.value === '') {
+                input.element.style.border = '2px solid red';
                 hasEmptyFields = true;
             }
         });
 
         if (hasEmptyFields) {
-            Swal.fire("Пожалуйста, заполните все поля");
+            Swal.fire('Пожалуйста, заполните все поля');
             return;
         }
 
@@ -72,36 +73,36 @@ function Table(props) {
 
         SetLocalStorageData(item, index);
 
-        setEnglish("");
-        setTranscription("");
-        setRussian("");
+        setEnglish('');
+        setTranscription('');
+        setRussian('');
 
         setEditIndex(-1);
 
         RefreshCard();
     };
     const removeInputBorder = (e) => {
-        e.target.style.border = "2px solid var(--header-link)";
+        e.target.style.border = '2px solid var(--header-link)';
     };
     const handleKeyDown = (e, item, index) => {
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
             handleSaveClick(item, index);
         }
     };
 
     const handleCancelClick = () => {
         setEditIndex(-1);
-        setEnglish("");
-        setTranscription("");
-        setRussian("");
+        setEnglish('');
+        setTranscription('');
+        setRussian('');
     };
 
     const handleDeleteClick = (index) => {
         RemoveLocalStorageData(index);
 
-        setEnglish("");
-        setTranscription("");
-        setRussian("");
+        setEnglish('');
+        setTranscription('');
+        setRussian('');
 
         RefreshTable();
 
@@ -113,8 +114,8 @@ function Table(props) {
     const handleAddClick = () => {
         setEditIndex(-1);
 
-        const table = document.getElementById("word-table");
-        const newRow = document.createElement("tr");
+        const table = document.getElementById('word-table');
+        const newRow = document.createElement('tr');
 
         newRow.innerHTML = `<td><input type="text" class="english" value=""></td>
             <td><input type="text" class="transcription" value=""></td>
@@ -122,23 +123,23 @@ function Table(props) {
             <td><div class="tr-buttons"><button class="btn-save"></button>
             <button class="btn-cancel"></button></div></td>`;
 
-        const btnSave = newRow.getElementsByClassName("btn-save")[0];
+        const btnSave = newRow.getElementsByClassName('btn-save')[0];
 
-        const btnCancel = newRow.getElementsByClassName("btn-cancel")[0];
+        const btnCancel = newRow.getElementsByClassName('btn-cancel')[0];
 
-        btnSave.addEventListener("click", function () {
+        btnSave.addEventListener('click', function () {
             const inputs = [
                 {
-                    name: "english",
-                    node: newRow.getElementsByClassName("english")[0],
+                    name: 'english',
+                    node: newRow.getElementsByClassName('english')[0],
                 },
                 {
-                    name: "transcription",
-                    node: newRow.getElementsByClassName("transcription")[0],
+                    name: 'transcription',
+                    node: newRow.getElementsByClassName('transcription')[0],
                 },
                 {
-                    name: "russian",
-                    node: newRow.getElementsByClassName("russian")[0],
+                    name: 'russian',
+                    node: newRow.getElementsByClassName('russian')[0],
                 },
             ];
 
@@ -146,22 +147,22 @@ function Table(props) {
             inputs.forEach((input) => {
                 input.value = input.node.value.trim();
 
-                if (input.value === "") {
-                    input.node.style.border = "2px solid red";
+                if (input.value === '') {
+                    input.node.style.border = '2px solid red';
                     hasEmptyFields = true;
                 }
             });
 
             inputs.forEach((input) => {
-                input.node.addEventListener("input", () => {
-                    if (input.node.value.trim() !== "") {
-                        setInputBorder(input.node, "var(--header-link)");
+                input.node.addEventListener('input', () => {
+                    if (input.node.value.trim() !== '') {
+                        setInputBorder(input.node, 'var(--header-link)');
                     }
                 });
             });
 
             if (hasEmptyFields) {
-                Swal.fire("Пожалуйста, заполните все поля");
+                Swal.fire('Пожалуйста, заполните все поля');
                 return;
             }
 
@@ -178,7 +179,7 @@ function Table(props) {
             RefreshCard();
         });
 
-        btnCancel.addEventListener("click", function () {
+        btnCancel.addEventListener('click', function () {
             newRow.remove();
         });
 
@@ -186,7 +187,7 @@ function Table(props) {
     };
 
     const renderCell = (item, index, property) => {
-        data = JSON.parse(localStorage.getItem("words"));
+        data = JSON.parse(localStorage.getItem('words'));
 
         if (index === editIndex) {
             return (
@@ -221,9 +222,9 @@ function Table(props) {
                 </tr>
                 {data.map((item, index) => (
                     <tr key={index}>
-                        {renderCell(item, index, "english")}
-                        {renderCell(item, index, "transcription")}
-                        {renderCell(item, index, "russian")}
+                        {renderCell(item, index, 'english')}
+                        {renderCell(item, index, 'transcription')}
+                        {renderCell(item, index, 'russian')}
                         <td>
                             <div className="tr-buttons">
                                 {index === editIndex ? (
