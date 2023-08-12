@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/language-flashcards/static/css/main.f313ba01.css",
-    "main.js": "/language-flashcards/static/js/main.00c37a6d.js",
+    "main.css": "/language-flashcards/static/css/main.4bead9d2.css",
+    "main.js": "/language-flashcards/static/js/main.b4f0481e.js",
     "static/js/787.6282c63a.chunk.js": "/language-flashcards/static/js/787.6282c63a.chunk.js",
     "static/media/neko.png": "/language-flashcards/static/media/neko.c57cc53bb49c22c3a02b.png",
     "static/media/cat.png": "/language-flashcards/static/media/cat.1af7d33d7b97e2070488.png",
@@ -13,12 +13,12 @@
     "static/media/icons8-cancel.svg": "/language-flashcards/static/media/icons8-cancel.f6b06843c8d72a588faa.svg",
     "static/media/Frame-11svg.svg": "/language-flashcards/static/media/Frame-11svg.55f6b9cd89b321f9b81b.svg",
     "static/media/Frame-18svg.svg": "/language-flashcards/static/media/Frame-18svg.fcf49b646ae2de9fabd6.svg",
-    "main.f313ba01.css.map": "/language-flashcards/static/css/main.f313ba01.css.map",
-    "main.00c37a6d.js.map": "/language-flashcards/static/js/main.00c37a6d.js.map",
+    "main.4bead9d2.css.map": "/language-flashcards/static/css/main.4bead9d2.css.map",
+    "main.b4f0481e.js.map": "/language-flashcards/static/js/main.b4f0481e.js.map",
     "787.6282c63a.chunk.js.map": "/language-flashcards/static/js/787.6282c63a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f313ba01.css",
-    "static/js/main.00c37a6d.js"
+    "static/css/main.4bead9d2.css",
+    "static/js/main.b4f0481e.js"
   ]
 }
