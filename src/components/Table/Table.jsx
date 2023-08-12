@@ -39,17 +39,36 @@ function Table(props) {
     };
 
     const handleSaveClick = (item, index) => {
-        if (!editEnglish == "") {
-            item.english = editEnglish;
+        const inputEnglish = document.querySelector(".english");
+        const inputTranscription = document.querySelector(".transcription");
+        const inputRussian = document.querySelector(".russian");
+
+        const inputEnglishValue = inputEnglish.value.trim();
+        const inputTranscriptionValue = inputTranscription.value.trim();
+        const inputRussianValue = inputRussian.value.trim();
+
+        const inputs = [
+            { element: inputEnglish, value: inputEnglishValue },
+            { element: inputTranscription, value: inputTranscriptionValue },
+            { element: inputRussian, value: inputRussianValue },
+        ];
+
+        let hasEmptyFields = false;
+        inputs.forEach((input) => {
+            if (input.value === "") {
+                input.element.style.border = "2px solid red";
+                hasEmptyFields = true;
+            }
+        });
+
+        if (hasEmptyFields) {
+            Swal.fire("Пожалуйста, заполните все поля");
+            return;
         }
 
-        if (!editTranscription == "") {
-            item.transcription = editTranscription;
-        }
-
-        if (!editRussian == "") {
-            item.russian = editRussian;
-        }
+        item.english = editEnglish || inputEnglishValue;
+        item.transcription = editTranscription || inputTranscriptionValue;
+        item.russian = editRussian || inputRussianValue;
 
         SetLocalStorageData(item, index);
 
@@ -61,7 +80,9 @@ function Table(props) {
 
         RefreshCard();
     };
-
+    const removeInputBorder = (e) => {
+        e.target.style.border = "2px solid var(--header-link)";
+    };
     const handleKeyDown = (e, item, index) => {
         if (e.key === "Enter") {
             handleSaveClick(item, index);
@@ -86,7 +107,12 @@ function Table(props) {
 
         RefreshCard();
     };
+    const setInputBorder = (input, color) => {
+        input.style.border = `2px solid ${color}`;
+    };
     const handleAddClick = () => {
+        setEditIndex(-1);
+
         const table = document.getElementById("word-table");
         const newRow = document.createElement("tr");
 
@@ -101,17 +127,49 @@ function Table(props) {
         const btnCancel = newRow.getElementsByClassName("btn-cancel")[0];
 
         btnSave.addEventListener("click", function () {
-            const english = newRow.getElementsByClassName("english")[0].value;
-            const transcription =
-                newRow.getElementsByClassName("transcription")[0].value;
-            const russian = newRow.getElementsByClassName("russian")[0].value;
+            const inputs = [
+                {
+                    name: "english",
+                    node: newRow.getElementsByClassName("english")[0],
+                },
+                {
+                    name: "transcription",
+                    node: newRow.getElementsByClassName("transcription")[0],
+                },
+                {
+                    name: "russian",
+                    node: newRow.getElementsByClassName("russian")[0],
+                },
+            ];
 
-            if (english === "" || transcription === "" || russian === "") {
-                Swal.fire("Заполните все поля!");
+            let hasEmptyFields = false;
+            inputs.forEach((input) => {
+                input.value = input.node.value.trim();
+
+                if (input.value === "") {
+                    input.node.style.border = "2px solid red";
+                    hasEmptyFields = true;
+                }
+            });
+
+            inputs.forEach((input) => {
+                input.node.addEventListener("input", () => {
+                    if (input.node.value.trim() !== "") {
+                        setInputBorder(input.node, "var(--header-link)");
+                    }
+                });
+            });
+
+            if (hasEmptyFields) {
+                Swal.fire("Пожалуйста, заполните все поля");
                 return;
             }
 
-            AddFirstLocalStorageData(english, transcription, russian);
+            AddFirstLocalStorageData(
+                inputs[0].value,
+                inputs[1].value,
+                inputs[2].value
+            );
 
             newRow.remove();
 
@@ -136,8 +194,10 @@ function Table(props) {
                     <input
                         type="text"
                         defaultValue={item[property]}
+                        className={property}
                         onChange={(event) => onChangeHandler(event, property)}
                         onKeyDown={(e) => handleKeyDown(e, item, index)}
+                        onFocus={removeInputBorder}
                     />
                 </td>
             );

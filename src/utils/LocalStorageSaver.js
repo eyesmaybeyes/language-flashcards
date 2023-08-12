@@ -16,7 +16,6 @@ export function SetLocalStorageData(item, index) {
 
     const retrievedData = JSON.parse(localStorage.getItem('words'));
 
-
     retrievedData.forEach((currElement, dataIndex) => {
 
         if (dataIndex === index) {
@@ -25,9 +24,10 @@ export function SetLocalStorageData(item, index) {
             retrievedData[dataIndex].transcription = item.transcription;
 
             retrievedData[dataIndex].russian = item.russian;
+
+            console.log(`Сохранено: ${item.english} ${item.transcription} ${item.russian}`);
         }
     });
-
     localStorage.setItem('words', JSON.stringify(retrievedData));
 
 }
