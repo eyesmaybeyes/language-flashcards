@@ -27,9 +27,10 @@ export const AppProvider = (props) => {
     const addWord = async (word) => {
         try {
             const response = await axios.post(
-                'http://itgirlschool.justmakeit.ru/api/words/add',
+                "http://itgirlschool.justmakeit.ru/api/words/add",
                 { word }
             );
+            console.log(response);
             setWords([...words, response.data]);
         } catch (error) {
             setError(error);
@@ -61,7 +62,7 @@ export const AppProvider = (props) => {
             const wordToUpdate = words[index];
             await axios.post(
                 `http://itgirlschool.justmakeit.ru/api/words/${wordToUpdate.id}/update`,
-                { updatedWord }
+                updatedWord
             );
             const updatedWords = [...words];
             updatedWords[index] = updatedWord;

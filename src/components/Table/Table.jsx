@@ -17,6 +17,11 @@ const isValueNotClicked = false;
 function Table(props) {
     const { words, loading, error, addWord, removeWord, updateWord } =
         useContext(AppContext);
+    // if (words) {
+    //     words.map((item, index) => {
+    //         console.log(item.english);
+    //     });
+    // }
     // let data = JSON.parse(localStorage.getItem("words"));
     const [editIndex, setEditIndex] = useState(-1);
     const [editEnglish, setEnglish] = useState("");
@@ -70,12 +75,15 @@ function Table(props) {
             return;
         }
 
-        item.english = editEnglish || inputEnglishValue;
-        item.transcription = editTranscription || inputTranscriptionValue;
-        item.russian = editRussian || inputRussianValue;
+        const updatedItem = {
+            ...item,
+            english: editEnglish || inputEnglishValue,
+            transcription: editTranscription || inputTranscriptionValue,
+            russian: editRussian || inputRussianValue,
+        };
 
         // SetLocalStorageData(item, index);
-
+        updateWord(index, updatedItem);
         setEnglish("");
         setTranscription("");
         setRussian("");
@@ -174,6 +182,12 @@ function Table(props) {
             //     inputs[1].value,
             //     inputs[2].value
             // );
+
+            addWord({
+                english: inputs[0].value,
+                transcription: inputs[1].value,
+                russian: inputs[2].value,
+            });
 
             newRow.remove();
 
