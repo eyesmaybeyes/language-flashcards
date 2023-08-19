@@ -1,11 +1,11 @@
-import React from 'react';
-import './Card.scss';
-import { useEffect, useState, useRef } from 'react';
+import React from "react";
+import "./Card.scss";
+import { useEffect, useState, useRef } from "react";
 
-import {
-    SetWordKnowLocalStorageData,
-    IsWordKnow,
-} from '../../utils/LocalStorageSaver.js';
+// import {
+//     SetWordKnowLocalStorageData,
+//     IsWordKnow,
+// } from '../../utils/LocalStorageSaver.js';
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -32,8 +32,8 @@ function Flashcard(props) {
     const handleKnow = (e) => {
         e.stopPropagation();
 
-        SetWordKnowLocalStorageData(elementIndex, true);
-        knowRef.current.classList.add('button-clicked');
+        // SetWordKnowLocalStorageData(elementIndex, true);
+        knowRef.current.classList.add("button-clicked");
 
         onKnowClick();
 
@@ -44,8 +44,8 @@ function Flashcard(props) {
     const handleNotKnow = (e) => {
         e.stopPropagation();
 
-        SetWordKnowLocalStorageData(elementIndex, false);
-        knowRef.current.classList.remove('button-clicked');
+        // SetWordKnowLocalStorageData(elementIndex, false);
+        knowRef.current.classList.remove("button-clicked");
 
         onKnowClick();
 
@@ -56,16 +56,16 @@ function Flashcard(props) {
         setKnowClicked(false);
     }, [word]);
 
-    useEffect(() => {
-        if (IsWordKnow(word)) {
-            knowRef.current.classList.add('button-clicked');
-        } else {
-            knowRef.current.classList.remove('button-clicked');
-        }
-        if (!knowRef.current.classList.contains('button-clicked')) {
-            knowRef.current.focus();
-        }
-    }, [word]);
+    // useEffect(() => {
+    //     if (IsWordKnow(word)) {
+    //         knowRef.current.classList.add("button-clicked");
+    //     } else {
+    //         knowRef.current.classList.remove("button-clicked");
+    //     }
+    //     if (!knowRef.current.classList.contains("button-clicked")) {
+    //         knowRef.current.focus();
+    //     }
+    // }, [word]);
 
     const handlePrev = (e) => {
         e.stopPropagation();
@@ -82,7 +82,7 @@ function Flashcard(props) {
             <div
                 key={key}
                 className="flashcard"
-                style={{ transform: isFlipped ? 'rotateX(180deg)' : '' }}
+                style={{ transform: isFlipped ? "rotateX(180deg)" : "" }}
             >
                 <div
                     key={isCardRefresh}
