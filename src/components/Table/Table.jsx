@@ -3,11 +3,11 @@ import { useState, useContext } from "react";
 import "./Table.scss";
 import Swal from "sweetalert2";
 
-// import {
-//     SetLocalStorageData,
-//     RemoveLocalStorageData,
-//     AddFirstLocalStorageData,
-// } from "../../utils/LocalStorageSaver.js";
+import {
+    // SetLocalStorageData,
+    RemoveLocalStorageData,
+    AddFirstLocalStorageData,
+} from "../../utils/LocalStorageSaver.js";
 
 import { AppContext } from "../Context/Context.jsx";
 
@@ -15,13 +15,7 @@ const isValueClicked = true;
 const isValueNotClicked = false;
 
 function Table(props) {
-    const { words, loading, error, addWord, removeWord, updateWord } =
-        useContext(AppContext);
-    // if (words) {
-    //     words.map((item, index) => {
-    //         console.log(item.english);
-    //     });
-    // }
+    const { words, addWord, removeWord, updateWord } = useContext(AppContext);
     // let data = JSON.parse(localStorage.getItem("words"));
     const [editIndex, setEditIndex] = useState(-1);
     const [editEnglish, setEnglish] = useState("");
@@ -109,7 +103,7 @@ function Table(props) {
     };
 
     const handleDeleteClick = (index) => {
-        // RemoveLocalStorageData(index);
+        RemoveLocalStorageData(index);
         removeWord(index);
         setEnglish("");
         setTranscription("");
@@ -177,11 +171,11 @@ function Table(props) {
                 return;
             }
 
-            // AddFirstLocalStorageData(
-            //     inputs[0].value,
-            //     inputs[1].value,
-            //     inputs[2].value
-            // );
+            AddFirstLocalStorageData(
+                inputs[0].value,
+                inputs[1].value,
+                inputs[2].value
+            );
 
             addWord({
                 english: inputs[0].value,

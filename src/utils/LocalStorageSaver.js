@@ -3,16 +3,29 @@ import axios from 'axios';
 export async function WriteLocalStorageData() {
 
     try {
-        const response = await axios.get('http://itgirlschool.justmakeit.ru/api/words');
+        const response = await axios.get('/api/words');
         const words = response.data;
+
+        const currentLocalStorageWords = JSON.parse(localStorage.getItem('words')) || [];
 
         words.forEach(function (word) {
             word.IsWordKnown = false;
         });
 
-        if (!IsDataWritten()) {
-            localStorage.setItem('words', JSON.stringify(words));
-        }
+        const updatedWords = words.map(word => {
+            const storedWord = currentLocalStorageWords.find(w => w.id === word.id);
+            if (storedWord) {
+                return {
+                    ...word,
+                    IsWordKnown: storedWord.IsWordKnown,
+                };
+            }
+            return word;
+        });
+
+        // if (!IsDataWritten()) {
+        localStorage.setItem('words', JSON.stringify(updatedWords));
+        // }
     } catch (error) {
         console.error(error);
     }
@@ -100,7 +113,7 @@ export async function AddFirstLocalStorageData(english, transcription, russian) 
             transcription: `${transcription}`
         };
 
-        retrievedData.unshift(word);
+        retrievedData.push(word);
 
         localStorage.setItem('words', JSON.stringify(retrievedData));
     } catch (error) {

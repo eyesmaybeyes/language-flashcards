@@ -1,11 +1,12 @@
 import React from "react";
 import "./Card.scss";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 
-// import {
-//     SetWordKnowLocalStorageData,
-//     IsWordKnow,
-// } from '../../utils/LocalStorageSaver.js';
+import { AppContext } from "../Context/Context.jsx";
+import {
+    SetWordKnowLocalStorageData,
+    IsWordKnow,
+} from "../../utils/LocalStorageSaver.js";
 
 function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
@@ -15,16 +16,24 @@ function Flashcard(props) {
         setIsFlipped(!isFlipped);
     };
 
-    const {
-        word,
-        transcription,
-        translation,
-        isCardRefresh,
-        elementIndex,
-        dataLength,
-        onKnowClick,
-    } = props;
+    // const {
+    //     word,
+    //     transcription,
+    //     translation,
+    //     isCardRefresh,
+    //     elementIndex,
+    //     dataLength,
+    //     onKnowClick,
+    // } = props;
+    const appContext = useContext(AppContext);
+    const words = appContext.words;
 
+    const { isCardRefresh, onKnowClick, elementIndex } = props;
+
+    const word = words[elementIndex]?.english;
+    const transcription = words[elementIndex]?.transcription;
+    const translation = words[elementIndex]?.russian;
+    const dataLength = words.length;
     const [knowClicked, setKnowClicked] = useState(false);
 
     const knowRef = useRef();
@@ -32,7 +41,7 @@ function Flashcard(props) {
     const handleKnow = (e) => {
         e.stopPropagation();
 
-        // SetWordKnowLocalStorageData(elementIndex, true);
+        SetWordKnowLocalStorageData(elementIndex, true);
         knowRef.current.classList.add("button-clicked");
 
         onKnowClick();
@@ -44,7 +53,7 @@ function Flashcard(props) {
     const handleNotKnow = (e) => {
         e.stopPropagation();
 
-        // SetWordKnowLocalStorageData(elementIndex, false);
+        SetWordKnowLocalStorageData(elementIndex, false);
         knowRef.current.classList.remove("button-clicked");
 
         onKnowClick();
@@ -56,16 +65,16 @@ function Flashcard(props) {
         setKnowClicked(false);
     }, [word]);
 
-    // useEffect(() => {
-    //     if (IsWordKnow(word)) {
-    //         knowRef.current.classList.add("button-clicked");
-    //     } else {
-    //         knowRef.current.classList.remove("button-clicked");
-    //     }
-    //     if (!knowRef.current.classList.contains("button-clicked")) {
-    //         knowRef.current.focus();
-    //     }
-    // }, [word]);
+    useEffect(() => {
+        if (IsWordKnow(word)) {
+            knowRef.current.classList.add("button-clicked");
+        } else {
+            knowRef.current.classList.remove("button-clicked");
+        }
+        if (!knowRef.current.classList.contains("button-clicked")) {
+            knowRef.current.focus();
+        }
+    }, [word]);
 
     const handlePrev = (e) => {
         e.stopPropagation();

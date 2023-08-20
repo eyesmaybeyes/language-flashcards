@@ -26,12 +26,9 @@ export const AppProvider = (props) => {
 
     const addWord = async (word) => {
         try {
-            const response = await axios.post(
-                "http://itgirlschool.justmakeit.ru/api/words/add",
-                { word }
-            );
+            const response = await axios.post("/api/words/add", word);
             console.log(response);
-            setWords([...words, response.data]);
+            setWords([...words, { ...response.data, know: false }]);
         } catch (error) {
             setError(error);
         }

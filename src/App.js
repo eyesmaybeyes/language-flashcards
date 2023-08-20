@@ -135,16 +135,18 @@ function App() {
                     <>
                         <Header />
                         <div className="container">
-                            <Flashcard ChangeCardNext={ChangeCardNext}
-                                ChangeCardPrev={ChangeCardPrev}
-                                word={selectedWord}
-                                transcription={selectedTranscription}
-                                translation={selectedTranslation}
-                                isCardRefresh={isCardRefresh}
-                                elementIndex={selectedCurrentElementIndex}
-                                dataLength={selectedDataLength}
-                                onKnowClick={handleStudied}
-                            />
+                            <AppProvider>
+                                <Flashcard ChangeCardNext={ChangeCardNext}
+                                    ChangeCardPrev={ChangeCardPrev}
+                                    word={selectedWord}
+                                    transcription={selectedTranscription}
+                                    translation={selectedTranslation}
+                                    isCardRefresh={isCardRefresh}
+                                    elementIndex={selectedCurrentElementIndex}
+                                    dataLength={selectedDataLength}
+                                    onKnowClick={handleStudied}
+                                />
+                            </AppProvider>
                             <p>Изучено слов: {GetWordKnowCount()}</p>
                         </div>
                         <Footer />
