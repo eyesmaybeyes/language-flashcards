@@ -1,5 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
+
 import axios from "axios";
+
+import ErrorComponent from "../Error/Error.jsx";
+import Loading from "../Loading/Loading.jsx";
 
 export const AppContext = createContext();
 
@@ -34,11 +38,19 @@ export const AppProvider = (props) => {
         }
     };
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div>
+                <Loading />
+            </div>
+        );
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return (
+            <div>
+                <ErrorComponent message={error.message} />
+            </div>
+        );
     }
     const removeWord = async (index) => {
         try {
