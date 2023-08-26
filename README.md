@@ -1,5 +1,7 @@
 # language-flashcards
 React application for learning foreign words.
+<img width="700" alt="screen" src="https://github.com/eyesmaybeyes/language-flashcards/assets/114153517/caf320e5-5069-42fe-9143-6038395581cb">
+<img width="700" alt="screen" src="https://github.com/eyesmaybeyes/language-flashcards/assets/114153517/061eff15-ee1e-4eef-a63d-e47f12687f66">
 
 ### [Live Demo](https://eyesmaybeyes.github.io/language-flashcards/)
 
