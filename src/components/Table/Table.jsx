@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import './Table.scss';
-
 import Swal from 'sweetalert2';
 
+import { observer } from 'mobx-react-lite';
+
+import { AppContext } from '../../stores/WordsStore';
 import {
-    SetLocalStorageData,
     RemoveLocalStorageData,
     AddFirstLocalStorageData,
 } from '../../utils/LocalStorageSaver.js';
@@ -13,8 +14,8 @@ import {
 const isValueClicked = true;
 const isValueNotClicked = false;
 
-function Table(props) {
-    let data = JSON.parse(localStorage.getItem('words'));
+const Table = observer(function Table(props) {
+    const { words, addWord, removeWord, updateWord } = useContext(AppContext);
     const [editIndex, setEditIndex] = useState(-1);
     const [editEnglish, setEnglish] = useState('');
     const [editTranscription, setTranscription] = useState('');
@@ -67,12 +68,14 @@ function Table(props) {
             return;
         }
 
-        item.english = editEnglish || inputEnglishValue;
-        item.transcription = editTranscription || inputTranscriptionValue;
-        item.russian = editRussian || inputRussianValue;
+        const updatedItem = {
+            ...item,
+            english: editEnglish || inputEnglishValue,
+            transcription: editTranscription || inputTranscriptionValue,
+            russian: editRussian || inputRussianValue,
+        };
 
-        SetLocalStorageData(item, index);
-
+        updateWord(index, updatedItem);
         setEnglish('');
         setTranscription('');
         setRussian('');
@@ -99,7 +102,7 @@ function Table(props) {
 
     const handleDeleteClick = (index) => {
         RemoveLocalStorageData(index);
-
+        removeWord(index);
         setEnglish('');
         setTranscription('');
         setRussian('');
@@ -172,6 +175,12 @@ function Table(props) {
                 inputs[2].value
             );
 
+            addWord({
+                english: inputs[0].value,
+                transcription: inputs[1].value,
+                russian: inputs[2].value,
+            });
+
             newRow.remove();
 
             RefreshTable();
@@ -187,8 +196,6 @@ function Table(props) {
     };
 
     const renderCell = (item, index, property) => {
-        data = JSON.parse(localStorage.getItem('words'));
-
         if (index === editIndex) {
             return (
                 <td>
@@ -220,7 +227,7 @@ function Table(props) {
                         ></button>
                     </th>
                 </tr>
-                {data.map((item, index) => (
+                {words.map((item, index) => (
                     <tr key={index}>
                         {renderCell(item, index, 'english')}
                         {renderCell(item, index, 'transcription')}
@@ -278,5 +285,5 @@ function Table(props) {
             setEditIndex(isValueClicked);
         }
     }
-}
+});
 export { Table };

@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
+import { AppProvider } from './stores/WordsStore';
+
 import { WriteLocalStorageData, GetWordKnowCount } from './utils/LocalStorageSaver.js';
 import { Header } from './components/Header/Header.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
@@ -116,13 +118,16 @@ function App() {
 
     return (
         <div className="App">
+
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path="/language-flashcards" element={
                     <>
                         <Header />
                         <div className="container">
-                            <Table RefreshCard={RefreshCard} />
+                            <AppProvider>
+                                <Table RefreshCard={RefreshCard} />
+                            </AppProvider>
                         </div>
                         <Footer />
                     </>
@@ -131,25 +136,27 @@ function App() {
                     <>
                         <Header />
                         <div className="container">
-                            <Flashcard ChangeCardNext={ChangeCardNext}
-                                ChangeCardPrev={ChangeCardPrev}
-                                word={selectedWord}
-                                transcription={selectedTranscription}
-                                translation={selectedTranslation}
-                                isCardRefresh={isCardRefresh}
-                                elementIndex={selectedCurrentElementIndex}
-                                dataLength={selectedDataLength}
-                                onKnowClick={handleStudied}
-                            />
+                            <AppProvider>
+                                <Flashcard ChangeCardNext={ChangeCardNext}
+                                    ChangeCardPrev={ChangeCardPrev}
+                                    word={selectedWord}
+                                    transcription={selectedTranscription}
+                                    translation={selectedTranslation}
+                                    isCardRefresh={isCardRefresh}
+                                    elementIndex={selectedCurrentElementIndex}
+                                    dataLength={selectedDataLength}
+                                    onKnowClick={handleStudied}
+                                />
+                            </AppProvider>
                             <p>Изучено слов: {GetWordKnowCount()}</p>
                         </div>
                         <Footer />
                     </>
                 } />
             </Routes>
+
         </div>
     );
 }
 
 export default App;
-

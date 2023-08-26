@@ -1,13 +1,16 @@
 import React from 'react';
 import './Card.scss';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 
+import { observer } from 'mobx-react-lite';
+
+import { AppContext } from '../../stores/WordsStore';
 import {
     SetWordKnowLocalStorageData,
     IsWordKnow,
 } from '../../utils/LocalStorageSaver.js';
 
-function Flashcard(props) {
+const Flashcard = observer(function Flashcard(props) {
     const [key, setKey] = useState(Date.now());
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -15,16 +18,15 @@ function Flashcard(props) {
         setIsFlipped(!isFlipped);
     };
 
-    const {
-        word,
-        transcription,
-        translation,
-        isCardRefresh,
-        elementIndex,
-        dataLength,
-        onKnowClick,
-    } = props;
+    const appContext = useContext(AppContext);
+    const words = appContext.words;
 
+    const { isCardRefresh, onKnowClick, elementIndex } = props;
+
+    const word = words[elementIndex]?.english;
+    const transcription = words[elementIndex]?.transcription;
+    const translation = words[elementIndex]?.russian;
+    const dataLength = words.length;
     const [knowClicked, setKnowClicked] = useState(false);
 
     const knowRef = useRef();
@@ -120,6 +122,6 @@ function Flashcard(props) {
             </div>
         </>
     );
-}
+});
 
 export { Flashcard };
